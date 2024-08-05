@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "title": "Designové křeslo",
+    "thumbnail_url": "/images/product-01.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Designový jídelní stůl",
+    "thumbnail_url": "/images/product-02.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Pohodlné křeslo",
+    "thumbnail_url": "/images/product-03.jpg"
+  },
+  {
+    "id": 4,
+    "title": "Dekorativní talíř",
+    "thumbnail_url": "/images/product-04.jpg"
+  },
+  {
+    "id": 5,
+    "title": "Dekorativní polštář",
+    "thumbnail_url": "/images/product-05.jpg"
+  },
+  {
+    "id": 6,
+    "title": "Solnička a pepřenka",
+    "thumbnail_url": "/images/product-06.jpg"
+  },
+  {
+    "id": 7,
+    "title": "Minimalistické sofa",
+    "thumbnail_url": "/images/product-07.jpg"
+  },
+  {
+    "id": 8,
+    "title": "Designové hodiny",
+    "thumbnail_url": "/images/product-08.jpg"
+  },
+  {
+    "id": 9,
+    "title": "Barová stolička",
+    "thumbnail_url": "/images/product-09.jpg"
+  },
+  {
+    "id": 10,
+    "title": "Lenoška",
+    "thumbnail_url": "/images/product-10.jpg"
+  }
+]
