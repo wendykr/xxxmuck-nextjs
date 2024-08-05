@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-interface ProductItemProps {
+export interface ProductItemProps {
   id: number;
   title: string;
   thumbnail_url: string;
@@ -13,7 +13,7 @@ export default function ProductItem({
   thumbnail_url,
 }: ProductItemProps) {
   return (
-    <Link href={`/${id}`}>
+    <Link href={`product/${id}`}>
       <div className="relative w-[290px] h-[324px]">
         <Image
           src={thumbnail_url}
