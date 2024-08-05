@@ -1,26 +1,10 @@
 import ProductItem, {
   ProductItemProps,
 } from "@/components/ProductItem/ProductItem";
+import useProductsData from "@/hooks/useProductsData";
 import { Inter } from "next/font/google";
-import { useState, useEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
-
-const useProductsData = () => {
-  const [data, setData] = useState<ProductItemProps[] | null>([]);
-
-  const fetchData = async () => {
-    const response = await fetch("/products.json");
-    const data = await response.json();
-    setData(data);
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  return data;
-};
 
 export default function Home() {
   const products = useProductsData();
