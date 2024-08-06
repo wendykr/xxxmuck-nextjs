@@ -6,7 +6,7 @@ export default function ProductDetail() {
   const router = useRouter();
   const { productId } = router.query;
 
-  const product = useProductData(productId);
+  const product = useProductData(String(productId));
 
   if (!product) {
     return (
@@ -16,14 +16,14 @@ export default function ProductDetail() {
     );
   }
 
-  const { title, thumbnail_url } = product;
+  const { name, image } = product;
 
   return (
     <div className="mx-auto my-32 max-w-7xl flex flex-row gap-10">
       <div className="relative w-[358px] h-[400px]">
         <Image
-          src={thumbnail_url}
-          alt={title}
+          src={image}
+          alt={name}
           fill
           className="object-cover"
           priority
@@ -31,7 +31,7 @@ export default function ProductDetail() {
         />
       </div>
       <div className="flex flex-col">
-        <h2 className="mx-0 my-4 text-4xl font-normal">{title}</h2>
+        <h2 className="mx-0 my-4 text-4xl font-normal">{name}</h2>
         <button className="btn btn-neutral w-48 text-white text-xl bg-[#414141]">
           Objednat
         </button>

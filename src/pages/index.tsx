@@ -1,7 +1,6 @@
-import ProductItem, {
-  ProductItemProps,
-} from "@/components/ProductItem/ProductItem";
+import ProductItem from "@/components/ProductItem/ProductItem";
 import useProductsData from "@/hooks/useProductsData";
+import { ProductItemStructure } from "@/types/ProductItemStructure";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -26,13 +25,13 @@ export default function Home() {
       </div>
       <div>
         <div className="mx-auto my-0 max-w-7xl grid grid-cols-3 justify-items-center">
-          {products.map((item: ProductItemProps) => {
+          {products.map((item: ProductItemStructure) => {
             return (
               <ProductItem
                 key={item.id}
                 id={item.id}
-                title={item.title}
-                thumbnail_url={item.thumbnail_url}
+                name={item.name}
+                image={item.image}
               />
             );
           })}
