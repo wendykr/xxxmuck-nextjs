@@ -1,14 +1,32 @@
-import useProductData from "@/hooks/useProductData";
+import { ProductItemStructure } from "@/types/ProductItemStructure";
 import Image from "next/image";
-import { useRouter } from "next/router";
+import { GetServerSideProps } from "next";
 
-export default function ProductDetail() {
-  const router = useRouter();
-  const { productId } = router.query;
+export const getServerSideProps: GetServerSideProps<
+  ProductDetailProps
+> = async (context) => {
+  const { productId } = context.params as { productId: string };
+  const response = await fetch(
+    "https://apps.kodim.cz/react-2/xxxmuck/products"
+  );
+  const responseData = await response.json();
+  const data = responseData.find(
+    (product: ProductItemStructure) => product.id === productId
+  );
 
-  const product = useProductData(String(productId));
+  return {
+    props: {
+      data,
+    },
+  };
+};
 
-  if (!product) {
+interface ProductDetailProps {
+  data: ProductItemStructure;
+}
+
+export default function ProductDetail({ data }: ProductDetailProps) {
+  if (!data) {
     return (
       <div className="mx-auto my-10 max-w-7xl text-center">
         <h1>Loading...</h1>
@@ -16,7 +34,7 @@ export default function ProductDetail() {
     );
   }
 
-  const { name, image } = product;
+  const { name, image } = data;
 
   return (
     <div className="mx-auto my-32 max-w-7xl flex flex-row gap-10">

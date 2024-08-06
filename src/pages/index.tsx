@@ -1,14 +1,28 @@
 import ProductItem from "@/components/ProductItem/ProductItem";
-import useProductsData from "@/hooks/useProductsData";
 import { ProductItemStructure } from "@/types/ProductItemStructure";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
-  const products = useProductsData();
+export const getServerSideProps = async () => {
+  const response = await fetch(
+    "https://apps.kodim.cz/react-2/xxxmuck/products"
+  );
+  const data = await response.json();
 
-  if (!products) {
+  return {
+    props: {
+      data,
+    },
+  };
+};
+
+interface HomeProps {
+  data: ProductItemStructure[];
+}
+
+export default function Home({ data }: HomeProps) {
+  if (!data) {
     return (
       <div className="mx-auto my-10 max-w-7xl text-center">
         <h1>Loading...</h1>
@@ -25,7 +39,7 @@ export default function Home() {
       </div>
       <div>
         <div className="mx-auto my-0 max-w-7xl grid grid-cols-3 justify-items-center">
-          {products.map((item: ProductItemStructure) => {
+          {data.map((item: ProductItemStructure) => {
             return (
               <ProductItem
                 key={item.id}
