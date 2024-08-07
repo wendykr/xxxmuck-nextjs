@@ -43,7 +43,7 @@ export default function Home({ data }: HomeProps) {
           <p>Doprava zdarma až k vám domů, na cenu nehleďte.</p>
         </div>
         <div>
-          <div className="mx-auto my-0 max-w-7xl grid grid-cols-3 justify-items-center">
+          <div className="mx-auto my-0 max-w-7xl grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-items-center">
             {data.map((item: ProductItemStructure) => {
               return (
                 <ProductItem

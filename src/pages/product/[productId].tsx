@@ -42,8 +42,8 @@ export default function ProductDetail({ data }: ProductDetailProps) {
       <Head>
         <title>{name} | XXXMuck</title>
       </Head>
-      <div className="mx-auto my-32 w-full sm:w-[640px] md:w-[768px] lg:w-[1024px] xl:w-[1280px] flex flex-row gap-10 flex-grow">
-        <div className="relative w-[358px] h-[400px]">
+      <div className="mx-auto my-32 px-[20px] w-full sm:w-[640px] md:w-[768px] lg:w-[1024px] xl:w-[1280px] flex flex-col sm:flex-row gap-10 flex-grow items-center sm:items-start">
+        <div className="relative w-[300px] h-[336px] sm:w-[358px] sm:h-[400px]">
           <Image
             src={image}
             alt={name}
@@ -53,9 +53,11 @@ export default function ProductDetail({ data }: ProductDetailProps) {
             sizes="(max-width: 600px) 100vw, (max-width: 1280px) 50vw, 360px"
           />
         </div>
-        <div className="flex flex-col">
-          <h2 className="mx-0 my-4 text-4xl font-normal">{name}</h2>
-          <button className="btn btn-neutral w-48 text-white text-xl bg-[#414141]">
+        <div className="flex flex-col items-center sm:items-start">
+          <h2 className="mx-0 my-4 text-4xl font-normal text-center sm:text-left">
+            {name}
+          </h2>
+          <button className="btn btn-neutral w-48 h-16 text-white text-xl bg-[#414141] rounded-none flex content-center">
             Objednat
           </button>
         </div>
