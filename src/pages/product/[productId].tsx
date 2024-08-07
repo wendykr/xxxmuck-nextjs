@@ -42,7 +42,7 @@ export default function ProductDetail({ data }: ProductDetailProps) {
       <Head>
         <title>{name} | XXXMuck</title>
       </Head>
-      <div className="mx-auto my-32 max-w-7xl flex flex-row gap-10">
+      <div className="mx-auto my-32 w-full sm:w-[640px] md:w-[768px] lg:w-[1024px] xl:w-[1280px] flex flex-row gap-10 flex-grow">
         <div className="relative w-[358px] h-[400px]">
           <Image
             src={image}
