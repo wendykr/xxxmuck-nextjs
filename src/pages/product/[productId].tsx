@@ -2,35 +2,58 @@ import { ProductItemStructure } from "@/types/ProductItemStructure";
 import Image from "next/image";
 import { GetServerSideProps } from "next";
 import Head from "next/head";
+import ErrorPage from "../404";
 
 export const getServerSideProps: GetServerSideProps<
   ProductDetailProps
 > = async (context) => {
   const { productId } = context.params as { productId: string };
-  const response = await fetch(
-    "https://apps.kodim.cz/react-2/xxxmuck/products"
-  );
-  const responseData = await response.json();
-  const data = responseData.find(
-    (product: ProductItemStructure) => product.id === productId
-  );
+  try {
+    const response = await fetch(
+      "https://apps.kodim.cz/react-2/xxxmuck/products"
+    );
+    const responseData = await response.json();
+    const data =
+      responseData.find(
+        (product: ProductItemStructure) => product.id === productId
+      ) || null;
 
-  return {
-    props: {
-      data,
-    },
-  };
+    return {
+      props: {
+        data,
+      },
+    };
+  } catch (error) {
+    return { props: { error: "Error fetching data", data: null } };
+  }
 };
 
 interface ProductDetailProps {
-  data: ProductItemStructure;
+  data: ProductItemStructure | null;
+  error?: string;
 }
 
-export default function ProductDetail({ data }: ProductDetailProps) {
+export default function ProductDetail({ data, error }: ProductDetailProps) {
+  if (error) {
+    return (
+      <div className="flex-grow">
+        <div className="mx-auto my-10 max-w-7xl text-center">
+          <h1>{error}</h1>
+        </div>
+      </div>
+    );
+  }
+
+  if (data === null) {
+    return <ErrorPage />;
+  }
+
   if (!data) {
     return (
-      <div className="mx-auto my-10 max-w-7xl text-center">
-        <h1>Loading...</h1>
+      <div className="flex-grow">
+        <div className="mx-auto my-10 max-w-7xl text-center">
+          <h1>Loading...</h1>
+        </div>
       </div>
     );
   }

@@ -6,28 +6,45 @@ import Head from "next/head";
 const inter = Inter({ subsets: ["latin"] });
 
 export const getServerSideProps = async () => {
-  const response = await fetch(
-    "https://apps.kodim.cz/react-2/xxxmuck/products"
-  );
-  const data = await response.json();
+  try {
+    const response = await fetch(
+      "https://apps.kodim.cz/react-2/xxxmuck/products"
+    );
+    const data = await response.json();
 
-  return {
-    props: {
-      data,
-    },
-  };
+    return {
+      props: {
+        data,
+      },
+    };
+  } catch (error) {
+    return { props: { error: "Error fetching data" } };
+  }
 };
 
 interface HomeProps {
   data: ProductItemStructure[];
+  error?: string;
 }
 
-export default function Home({ data }: HomeProps) {
+export default function Home({ data, error }: HomeProps) {
+  if (error) {
+    return (
+      <main className={`p-10 text-center flex-grow ${inter.className}`}>
+        <div className="mx-auto my-10 max-w-7xl text-center">
+          <h1>{error}</h1>
+        </div>
+      </main>
+    );
+  }
+
   if (!data) {
     return (
-      <div className="mx-auto my-10 max-w-7xl text-center">
-        <h1>Loading...</h1>
-      </div>
+      <main className={`p-10 text-center flex-grow ${inter.className}`}>
+        <div className="mx-auto my-10 max-w-7xl text-center">
+          <h1>Loading...</h1>
+        </div>
+      </main>
     );
   }
 
