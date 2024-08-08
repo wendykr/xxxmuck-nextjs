@@ -40,11 +40,16 @@ export default function Home({ data, error }: HomeProps) {
 
   if (!data) {
     return (
-      <main className={`p-10 text-center flex-grow ${inter.className}`}>
-        <div className="mx-auto my-10 max-w-7xl text-center">
-          <h1>Loading...</h1>
-        </div>
-      </main>
+      <>
+        <Head>
+          <title>XXXMuck: Next.js + React + TypeScript</title>
+        </Head>
+        <main className={`p-10 text-center flex-grow ${inter.className}`}>
+          <div className="mx-auto my-10 max-w-7xl text-center">
+            <h1>Loading...</h1>
+          </div>
+        </main>
+      </>
     );
   }
 

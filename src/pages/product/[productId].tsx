@@ -36,11 +36,16 @@ interface ProductDetailProps {
 export default function ProductDetail({ data, error }: ProductDetailProps) {
   if (error) {
     return (
-      <div className="flex-grow">
-        <div className="mx-auto my-10 max-w-7xl text-center">
-          <h1>{error}</h1>
+      <>
+        <Head>
+          <title>XXXMuck</title>
+        </Head>
+        <div className="flex-grow">
+          <div className="mx-auto my-10 max-w-7xl text-center">
+            <h1>{error}</h1>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 
@@ -50,11 +55,16 @@ export default function ProductDetail({ data, error }: ProductDetailProps) {
 
   if (!data) {
     return (
-      <div className="flex-grow">
-        <div className="mx-auto my-10 max-w-7xl text-center">
-          <h1>Loading...</h1>
+      <>
+        <Head>
+          <title>XXXMuck</title>
+        </Head>
+        <div className="flex-grow">
+          <div className="mx-auto my-10 max-w-7xl text-center">
+            <h1>Loading...</h1>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 
