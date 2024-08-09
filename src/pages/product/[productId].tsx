@@ -1,22 +1,19 @@
 import { ProductItemStructure } from "@/types/ProductItemStructure";
 import Image from "next/image";
-import { GetServerSideProps } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
-import ErrorPage from "../404";
 
-export const getServerSideProps: GetServerSideProps<
-  ProductDetailProps
-> = async (context) => {
+export const getStaticProps: GetStaticProps<ProductDetailProps> = async (
+  context
+) => {
   const { productId } = context.params as { productId: string };
   try {
     const response = await fetch(
       "https://apps.kodim.cz/react-2/xxxmuck/products"
     );
-    const responseData = await response.json();
+    const responseData: ProductItemStructure[] = await response.json();
     const data =
-      responseData.find(
-        (product: ProductItemStructure) => product.id === productId
-      ) || null;
+      responseData.find((product) => product.id === productId) || null;
 
     return {
       props: {
@@ -25,6 +22,29 @@ export const getServerSideProps: GetServerSideProps<
     };
   } catch (error) {
     return { props: { error: "Error fetching data", data: null } };
+  }
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  try {
+    const response = await fetch(
+      "https://apps.kodim.cz/react-2/xxxmuck/products"
+    );
+    const products: ProductItemStructure[] = await response.json();
+
+    const paths = products.map((product) => ({
+      params: { productId: product.id },
+    }));
+
+    return {
+      paths,
+      fallback: false,
+    };
+  } catch (error) {
+    return {
+      paths: [],
+      fallback: false,
+    };
   }
 };
 
@@ -49,10 +69,6 @@ export default function ProductDetail({ data, error }: ProductDetailProps) {
     );
   }
 
-  if (data === null) {
-    return <ErrorPage />;
-  }
-
   if (!data) {
     return (
       <>
@@ -70,10 +86,12 @@ export default function ProductDetail({ data, error }: ProductDetailProps) {
 
   const { name, image } = data;
 
+  const titleHead: string = `${name} | XXXMuck`;
+
   return (
     <>
       <Head>
-        <title>{name} | XXXMuck</title>
+        <title>{titleHead}</title>
       </Head>
       <div className="mx-auto my-32 px-[20px] w-full sm:w-[640px] md:w-[768px] lg:w-[1024px] xl:w-[1280px] flex flex-col sm:flex-row gap-10 flex-grow items-center sm:items-start">
         <div className="relative w-[300px] h-[336px] sm:w-[358px] sm:h-[400px]">

@@ -1,11 +1,12 @@
 import ProductItem from "@/components/ProductItem/ProductItem";
 import { ProductItemStructure } from "@/types/ProductItemStructure";
+import { GetStaticProps } from "next";
 import { Inter } from "next/font/google";
 import Head from "next/head";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const getServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   try {
     const response = await fetch(
       "https://apps.kodim.cz/react-2/xxxmuck/products"
