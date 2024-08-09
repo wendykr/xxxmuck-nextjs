@@ -13,7 +13,8 @@ export default function ProductItem({ id, name, image }: ProductItemProps) {
           alt={name}
           fill
           className="object-cover"
-          priority
+          loading="lazy"
+          priority={Number(id) < 3}
           sizes="(max-width: 600px) 100vw, (max-width: 1280px) 50vw, 290px"
         />
       </div>
