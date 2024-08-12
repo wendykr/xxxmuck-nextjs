@@ -10,7 +10,7 @@ export default function ProductItem({ id, name, image }: ProductItemProps) {
       href={`product/${id}`}
       className="transform transition duration-500 hover:opacity-90 hover:scale-[1.02]"
     >
-      <div className="relative w-[290px] h-[324px] dark:bg-black">
+      <div className="relative w-[290px] h-[324px] dark:bg-[#110f0e]">
         <Image
           src={image}
           alt={name}

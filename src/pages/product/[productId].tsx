@@ -54,34 +54,17 @@ interface ProductDetailProps {
 }
 
 export default function ProductDetail({ data, error }: ProductDetailProps) {
-  if (error) {
+  if (error || !data) {
     return (
       <>
         <Head>
           <title>XXXMuck</title>
         </Head>
-        <div className="h-screen dark:bg-black">
+        <div className="h-screen dark:bg-[#110f0e]">
           <div className="flex-grow">
-            <div className="mx-auto my-10 max-w-7xl text-center">
-              <h2 className="text-2xl dark:text-[#ebebeb]">{error}</h2>
-            </div>
-          </div>
-        </div>
-      </>
-    );
-  }
-
-  if (!data) {
-    return (
-      <>
-        <Head>
-          <title>XXXMuck</title>
-        </Head>
-        <div className="h-screen dark:bg-black">
-          <div className="flex-grow">
-            <div className="mx-auto my-10 max-w-7xl text-center">
-              <h2 className="text-2xl dark:text-[#ebebeb]">Loading...</h2>
-            </div>
+            <h2 className="mx-auto my-10 text-2xl dark:text-[#ebebeb]">
+              {error ? error : "Loading..."}
+            </h2>
           </div>
         </div>
       </>
@@ -97,7 +80,7 @@ export default function ProductDetail({ data, error }: ProductDetailProps) {
       <Head>
         <title>{titleHead}</title>
       </Head>
-      <div className="h-screen dark:bg-black">
+      <div className="h-screen dark:bg-[#110f0e]">
         <div className="mx-auto my-32 px-[20px] w-full sm:w-[640px] md:w-[768px] lg:w-[1024px] xl:w-[1280px] flex flex-col sm:flex-row gap-10 flex-grow items-center sm:items-start">
           <div className="relative w-[300px] h-[336px] sm:w-[358px] sm:h-[400px]">
             <Image

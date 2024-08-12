@@ -7,7 +7,7 @@ export default function ErrorPage() {
       <Head>
         <title>404 | XXXMuck</title>
       </Head>
-      <div className="h-screen dark:bg-black flex">
+      <div className="h-screen dark:bg-[#110f0e] flex">
         <div className="mx-auto px-[20px] w-full sm:w-[640px] md:w-[768px] lg:w-[1024px] xl:w-[1280px] flex flex-col flex-grow items-center justify-center">
           <h2 className="mt-0 mb-8 text-2xl dark:text-[#ebebeb]">Jejda ...</h2>
           <p className="text-center text-[#6d6d6d] text-[18px]">
