@@ -6,7 +6,10 @@ export interface ProductItemProps extends ProductItemStructure {}
 
 export default function ProductItem({ id, name, image }: ProductItemProps) {
   return (
-    <Link href={`product/${id}`}>
+    <Link
+      href={`product/${id}`}
+      className="transform transition duration-500 hover:opacity-90 hover:scale-[1.02]"
+    >
       <div className="relative w-[290px] h-[324px]">
         <Image
           src={image}

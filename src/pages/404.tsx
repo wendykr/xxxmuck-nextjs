@@ -8,7 +8,7 @@ export default function ErrorPage() {
         <title>404 | XXXMuck</title>
       </Head>
       <div className="mx-auto px-[20px] w-full sm:w-[640px] md:w-[768px] lg:w-[1024px] xl:w-[1280px] flex flex-col flex-grow items-center justify-center">
-        <h2 className="mt-0 mb-8 text-[24px]">Jejda ...</h2>
+        <h2 className="mt-0 mb-8 text-2xl">Jejda ...</h2>
         <p className="text-center text-[#6d6d6d] text-[18px]">
           Tuhle stránku ještě nemám nebo jde o chybný odkaz.
         </p>

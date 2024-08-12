@@ -62,7 +62,7 @@ export default function ProductDetail({ data, error }: ProductDetailProps) {
         </Head>
         <div className="flex-grow">
           <div className="mx-auto my-10 max-w-7xl text-center">
-            <h1>{error}</h1>
+            <h2 className="text-2xl">{error}</h2>
           </div>
         </div>
       </>
@@ -77,7 +77,7 @@ export default function ProductDetail({ data, error }: ProductDetailProps) {
         </Head>
         <div className="flex-grow">
           <div className="mx-auto my-10 max-w-7xl text-center">
-            <h1>Loading...</h1>
+            <h2 className="text-2xl">Loading...</h2>
           </div>
         </div>
       </>
