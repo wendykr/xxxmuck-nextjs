@@ -59,8 +59,12 @@ export default function Home({ data, error }: HomeProps) {
       <Head>
         <title>XXXMuck: Next.js + React + TypeScript</title>
       </Head>
-      <main className={`p-10 text-center flex-grow ${inter.className}`}>
-        <h2 className="mx-0 my-10 text-[30px] font-normal">Aktuální nabídka</h2>
+      <main
+        className={`p-10 text-center flex-grow dark:bg-[#110f0e] ${inter.className}`}
+      >
+        <h2 className="mx-0 my-10 text-[30px] font-normal dark:text-[#ebebeb]">
+          Aktuální nabídka
+        </h2>
         <div className="mb-[80px] text-[18px] text-[#6d6d6d]">
           <p>Nejnovější prémiové produkty od předních českých designérů.</p>
           <p>Doprava zdarma až k vám domů, na cenu nehleďte.</p>

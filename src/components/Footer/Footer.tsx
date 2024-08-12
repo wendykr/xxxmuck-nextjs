@@ -2,8 +2,8 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="mx-auto my-0 bg-[#ccc] w-full">
-      <div className="mx-auto max-w-7xl py-[12px]">
+    <footer className="mx-auto my-0 bg-[#ccc] w-full dark:bg-stone-950">
+      <div className="mx-auto max-w-7xl py-[12px] dark:text-[#ebebeb]">
         <p className="text-center text-[14px]">
           © 2024{" "}
           <Link
