@@ -8,7 +8,7 @@ import { ThemeProvider as NextThemesProvider } from "next-themes";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <NextUIProvider>
-      <NextThemesProvider attribute="class" defaultTheme="light">
+      <NextThemesProvider attribute="class">
         <div className="flex flex-col h-screen">
           <Header />
           <Component {...pageProps} />
