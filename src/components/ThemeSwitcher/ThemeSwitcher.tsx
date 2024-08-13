@@ -1,9 +1,9 @@
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState<boolean>(false);
+  const { setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -13,10 +13,10 @@ export default function ThemeToggle() {
 
   return (
     <button
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      onClick={() => setTheme(resolvedTheme === "light" ? "dark" : "light")}
       className="flex items-center justify-center p-2 rounded"
     >
-      {theme === "light" ? (
+      {resolvedTheme === "light" ? (
         <svg
           className="size-6 stroke-current text-gray-950 hover:text-gray-700"
           xmlns="http://www.w3.org/2000/svg"
@@ -40,9 +40,9 @@ export default function ThemeToggle() {
           viewBox="0 0 24 24"
           fill="none"
           stroke="#ebebeb"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
         >
           <circle cx="12" cy="12" r="4"></circle>
           <path d="M12 2v2"></path>
