@@ -29,26 +29,18 @@ interface HomeProps {
 }
 
 export default function Home({ data, error }: HomeProps) {
-  if (error) {
-    return (
-      <main className={`p-10 text-center flex-grow ${inter.className}`}>
-        <div className="mx-auto my-10 max-w-7xl text-center">
-          <h2 className="text-2xl">{error}</h2>
-        </div>
-      </main>
-    );
-  }
-
-  if (!data) {
+  if (error || !data) {
     return (
       <>
         <Head>
           <title>XXXMuck: Next.js + React + TypeScript</title>
         </Head>
-        <main className={`p-10 text-center flex-grow ${inter.className}`}>
-          <div className="mx-auto my-10 max-w-7xl text-center">
-            <h1>Loading...</h1>
-          </div>
+        <main
+          className={`p-10 text-center flex-grow dark:bg-[#110f0e] ${inter.className}`}
+        >
+          <h2 className="mx-auto my-10 text-2xl dark:text-[#ebebeb]">
+            {error ? error : "Loading..."}
+          </h2>
         </main>
       </>
     );
@@ -59,8 +51,12 @@ export default function Home({ data, error }: HomeProps) {
       <Head>
         <title>XXXMuck: Next.js + React + TypeScript</title>
       </Head>
-      <main className={`p-10 text-center flex-grow ${inter.className}`}>
-        <h2 className="mx-0 my-10 text-[30px] font-normal">Aktuální nabídka</h2>
+      <main
+        className={`p-10 text-center flex-grow dark:bg-[#110f0e] ${inter.className}`}
+      >
+        <h2 className="mx-auto my-10 text-[30px] dark:text-[#ebebeb]">
+          Aktuální nabídka
+        </h2>
         <div className="mb-[80px] text-[18px] text-[#6d6d6d]">
           <p>Nejnovější prémiové produkty od předních českých designérů.</p>
           <p>Doprava zdarma až k vám domů, na cenu nehleďte.</p>

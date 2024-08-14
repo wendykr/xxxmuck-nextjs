@@ -54,30 +54,17 @@ interface ProductDetailProps {
 }
 
 export default function ProductDetail({ data, error }: ProductDetailProps) {
-  if (error) {
+  if (error || !data) {
     return (
       <>
         <Head>
           <title>XXXMuck</title>
         </Head>
-        <div className="flex-grow">
-          <div className="mx-auto my-10 max-w-7xl text-center">
-            <h2 className="text-2xl">{error}</h2>
-          </div>
-        </div>
-      </>
-    );
-  }
-
-  if (!data) {
-    return (
-      <>
-        <Head>
-          <title>XXXMuck</title>
-        </Head>
-        <div className="flex-grow">
-          <div className="mx-auto my-10 max-w-7xl text-center">
-            <h2 className="text-2xl">Loading...</h2>
+        <div className="h-screen dark:bg-[#110f0e]">
+          <div className="flex-grow">
+            <h2 className="mx-auto my-10 text-2xl dark:text-[#ebebeb]">
+              {error ? error : "Loading..."}
+            </h2>
           </div>
         </div>
       </>
@@ -93,24 +80,26 @@ export default function ProductDetail({ data, error }: ProductDetailProps) {
       <Head>
         <title>{titleHead}</title>
       </Head>
-      <div className="mx-auto my-32 px-[20px] w-full sm:w-[640px] md:w-[768px] lg:w-[1024px] xl:w-[1280px] flex flex-col sm:flex-row gap-10 flex-grow items-center sm:items-start">
-        <div className="relative w-[300px] h-[336px] sm:w-[358px] sm:h-[400px]">
-          <Image
-            src={image}
-            alt={name}
-            fill
-            className="object-cover"
-            priority
-            sizes="(max-width: 600px) 100vw, (max-width: 1280px) 50vw, 360px"
-          />
-        </div>
-        <div className="flex flex-col items-center sm:items-start">
-          <h2 className="mx-0 my-4 text-4xl font-normal text-center sm:text-left">
-            {name}
-          </h2>
-          <button className="btn btn-neutral w-48 h-16 text-white text-xl bg-[#414141] rounded-none flex content-center">
-            Objednat
-          </button>
+      <div className="h-screen dark:bg-[#110f0e]">
+        <div className="mx-auto my-32 px-[20px] w-full sm:w-[640px] md:w-[768px] lg:w-[1024px] xl:w-[1280px] flex flex-col sm:flex-row gap-10 flex-grow items-center sm:items-start">
+          <div className="relative w-[300px] h-[336px] sm:w-[358px] sm:h-[400px]">
+            <Image
+              src={image}
+              alt={name}
+              fill
+              className="object-cover"
+              priority
+              sizes="(max-width: 600px) 100vw, (max-width: 1280px) 50vw, 360px"
+            />
+          </div>
+          <div className="flex flex-col items-center sm:items-start">
+            <h2 className="mx-0 my-4 text-4xl font-normal text-center sm:text-left dark:text-[#ebebeb]">
+              {name}
+            </h2>
+            <button className="btn btn-neutral w-48 h-16 text-white text-xl bg-[#414141] dark:bg-[#ebebeb] dark:hover:bg-[#cacaca] dark:text-stone-950 rounded-none flex content-center">
+              Objednat
+            </button>
+          </div>
         </div>
       </div>
     </>
